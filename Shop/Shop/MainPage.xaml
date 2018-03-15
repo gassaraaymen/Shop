@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Shop"
+             x:Class="Shop.MainPage">
+    
+   
+    <StackLayout Padding="0" Margin="0" Spacing="0">
+       
+        
+        
+        <ScrollView Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" Spacing="40" BackgroundColor="#443e42" HeightRequest="60">
+                <Label x:Name="Travel" Text="Travel" TextColor="Gray" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>                
+                <Label x:Name="Shoes" Text="Shoes" TextColor="Gray" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="Bag" Text="Bags" TextColor="Gray" VerticalOptions="Center" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="Accessoreis" Text="Accessoreis" TextColor="Gray" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </ScrollView>      
+        <StackLayout BackgroundColor="#fff" Orientation="Horizontal">
+            <SearchBar x:Name="MainSearchBar" FontSize="14" TextChanged="SearchBar_OnTextChanged" Placeholder="Search here" HorizontalOptions="CenterAndExpand"/>
+            <Image Source="Settings.png" WidthRequest="35" HeightRequest="35" HorizontalOptions="EndAndExpand"></Image>
+        </StackLayout>       
+        <StackLayout Padding="0" VerticalOptions="FillAndExpand" Spacing="5" >
+            <ListView x:Name="ProductslistView" SeparatorVisibility="None" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="0"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame BindingContext="{Binding Item1}" Padding="1" BackgroundColor="#ffffff" HasShadow="false" OutlineColor="#bbb" Margin="0,0,0,0">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="FrameTapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout>
+                                            <Label Text="{Binding State}" FontSize="14" TextColor="#b9bccb" HorizontalOptions="Center"  VerticalOptions="Center" LineBreakMode="TailTruncation"/>                                            
+                                            <Image Source="{Binding Image}" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="80"/>
+                                        </StackLayout>                                        
+                                        <StackLayout Grid.Row="2" Padding="5,0,5,5" Spacing="5">
+                                            <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" TextColor="Black" LineBreakMode="TailTruncation"/>
+                                            <Label Text="{Binding Price}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" LineBreakMode="TailTruncation" TextColor="Black"/>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>                                              
+                                            </Grid>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>                              
+                                <Frame Grid.Column="2" IsVisible="{Binding IsVisible}" BindingContext="{Binding Item2}" Padding="1" BackgroundColor="#ffffff" HasShadow="False" OutlineColor="#bbb" Margin="0">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="FrameTapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="100"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout Grid.Row="0" Padding="0,0,0,0" Spacing="5">
+                                            <Label Text="{Binding State}" FontSize="14" TextColor="DarkGray" HorizontalOptions="Center"  VerticalOptions="Center" LineBreakMode="TailTruncation"/>                                           
+                                            <Image Source="{Binding Image}" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="80"/>                                          
+                                        </StackLayout>
+
+                                        <StackLayout Grid.Row="2" Padding="5,0,5,5" Spacing="5">
+                                            <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="14" TextColor="Black" LineBreakMode="TailTruncation"/>
+                                            <Label Text="{Binding Price}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="14" LineBreakMode="TailTruncation" TextColor="Black"/>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>                            
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>      
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="60" BackgroundColor="#443e42" Spacing="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="Home.png" Grid.Row="0" Grid.Column="0" WidthRequest="32" HeightRequest="20" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Search.png" Grid.Row="0" Grid.Column="1" WidthRequest="20" HeightRequest="18" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Menu.png" Grid.Row="0" Grid.Column="2" WidthRequest="20" HeightRequest="18" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Cart.png" Grid.Row="0" Grid.Column="3" WidthRequest="20" HeightRequest="18" HorizontalOptions="CenterAndExpand"></Image>
+                <Image Source="Account.png" Grid.Row="0" Grid.Column="4" WidthRequest="20" HeightRequest="18" HorizontalOptions="CenterAndExpand"></Image>
+            </Grid>
+        </StackLayout>     
+    </StackLayout>    
+</ContentPage>
